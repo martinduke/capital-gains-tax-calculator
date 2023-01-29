@@ -1,6 +1,6 @@
 import math
 
-# This library computes the IRS tax table for tax year 2021. When the
+# This library computes the IRS tax table for tax year 2022. When the
 # brackets change in later years, update "rate" and "min_at_rate" below
 # accordingly.
 
@@ -10,10 +10,10 @@ import math
 def pure_tax_rate(income, status):
     # update these each year
     rate = [ .1, .12, .22, .24, .32, .35, .37 ]
-    min_at_rate = [ [0, 9950, 40525, 86375, 164925, 209425, 523600],
-                [0, 19900, 81050, 172750, 329850, 418850, 628300],
-                [0, 9950, 40525, 86375, 164925, 209425, 314150],
-                [0, 14200, 54200, 86350, 164900, 209400, 523600] ]
+    min_at_rate = [ [0, 10275, 41775, 89075, 170050, 215920, 539900],
+                [0, 20550, 83550, 178150, 340100, 431900, 647850],
+                [0, 10275, 41775, 89075, 170050, 215950, 323925],
+                [0, 14650, 55900, 89050, 170050, 215950, 539900] ]
     i = 0;
     total = 0;
     while (i < len(rate) and min_at_rate[status][i] < income):

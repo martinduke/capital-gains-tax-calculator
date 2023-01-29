@@ -1,7 +1,7 @@
 import tax_table
 
 # This file computes each line of the "Qualified Dividends and Capital
-# Gain Tax Worksheet" for form 1040, Tax Year 2021.
+# Gain Tax Worksheet" for form 1040, Tax Year 2022.
 
 # For future tax years, you should check this worksheet in the 1040
 # instructions to make sure that the allowances listed on line 6 and line
@@ -13,8 +13,8 @@ def println(line, arg):
     print("Line " + str(line) + ": $" + ("{:10.2f}".format(arg)))
 
 # These will probably change each year
-l6_thresholds = [ 40400, 80800, 40400, 54100 ]
-l13_thresholds = [ 445850, 501600, 250800,  473750]
+l6_thresholds = [ 41675, 83350, 41675, 55800 ]
+l13_thresholds = [ 459750, 517200, 258600,  488500]
 
 print("Filing Status")
 print("(1) Single")
@@ -33,7 +33,10 @@ sched_d = input("Filed schedule D (y/n) ")
 if sched_d == 'y' or sched_d == 'Y':
     d15 = float(input("1040, Schedule D, Line 15: "))
     d16 = float(input("1040, Schedule D, Line 16: "))
-    l.append(min(d15, d16))
+    if (min(d15, d16) < 0):
+        l.append(0)
+    else:
+        l.append(min(d15, d16))
 else:
     l.append(float(input("1040SR, Line 7: ")))
 
